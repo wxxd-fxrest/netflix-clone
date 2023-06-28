@@ -29,7 +29,7 @@ const Navbar = ({isScrolled}) => {
         <nav className={`${isScrolled ? "scrolled" : ""} flex`}>
           <div className="left flex a-center">
             <div className="brand flex a-center j-center">
-              <img src={Logo} alt="Logo" />
+              <img src={Logo} alt="Logo" onClick={() => navigate("/")}/>
             </div>
             <ul className="links flex">
               {links.map(({ name, link }) => {
@@ -53,16 +53,14 @@ const Navbar = ({isScrolled}) => {
               >
                 <FaSearch />
               </button>
-              <input
-                type="text"
-                placeholder="Search"
-                onMouseEnter={() => setInputHover(true)}
-                onMouseLeave={() => setInputHover(false)}
-                onBlur={() => {
-                  setShowSearch(false);
-                  setInputHover(false);
-                }}
-              />
+              <input type="text"
+                    placeholder="Search"
+                    onMouseEnter={() => setInputHover(true)}
+                    onMouseLeave={() => setInputHover(false)}
+                    onBlur={() => {
+                      setShowSearch(false);
+                      setInputHover(false);
+                    }}/>
             </div>
             <button onClick={() => signOut(auth)}>
               <FaPowerOff />
@@ -94,6 +92,7 @@ const Container = styled.div`
       .brand {
         img {
           height: 4rem;
+          cursor: pointer;
         }
       }
       .links {
